@@ -1,1 +1,1 @@
-a
+/home/hem/.vim/vimrc

@@ -131,6 +131,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-conda config --set auto_activate_base False
+conda config --set auto_activate_base True
 
 alias vpn='cd /home/hem/.vpn && sudo openvpn --config falcon-UDP4-1194-hemilyn.aguiar-config.ovpn | bash colorized.conf'
+alias ctags=/usr/local/bin/ctags
