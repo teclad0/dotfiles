@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -199,7 +199,7 @@ status_command i3status --config /etc/i3status.conf
 workspace_auto_back_and_forth yes
 
 # i3lock image
-set $i3lockwall i3lock -i  '/home/hem/Downloads/Rosa - Template.png' -t
+set $i3lockwall i3lock -i  '/home/hem/Downloads/Rosa - Rosa.png' -t
 
 # shutdown / restart / suspend...
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (CTRL+s) shutdown
@@ -219,7 +219,9 @@ mode "$mode_system" {
 
 bindsym $mod+BackSpace mode "$mode_system"
 
-exec feh --no-fehbg --bg-fill '/home/hem/Downloads/Rosa - Template.png'
+#exec feh --no-fehbg --bg-fill 
+exec feh --bg-scale '/home/hem/Downloads/Rosa Claro - Template.png'
+
 
 # Increase brightness
 bindsym $mod+XF86MonBrightnessUp exec brightnessctl set 10%+ && $refresh_i3status
@@ -231,8 +233,20 @@ for_window [class="^.*"] border pixel 2
 gaps inner 5
 gaps outer 2
 
-exec compton &
-exect --no-startup-id compton --config ~/.config/compton.conf 
+#exec compton &
+#exect --no-startup-id compton --config ~/.config/compton.conf 
 
 # Monitor
-exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1  &
+exec --no-startup-id xrandr --output HDMI-1 --auto --left-of eDP-1  &
+
+floating_minimum_size 75 x 50
+
+floating_maximum_size 640 x 480
+
+bindsym XF86MonBrightnessDown exec sudo light -U 10
+bindsym XF86MonBrightnessUp exec sudo light -A 10
+
+## Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png

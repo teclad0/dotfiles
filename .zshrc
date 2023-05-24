@@ -11,7 +11,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="sunrise"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -73,7 +73,12 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-autocomplete
+    )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -121,3 +126,9 @@ unset __conda_setup
 
 alias vpn='cd /home/hem/.vpn && sudo openvpn --config falcon-UDP4-1194-hemilyn.aguiar-config.ovpn | bash colorized.conf'
 alias ctags=/usr/local/bin/ctags
+eval "$(lua ~/.z.lua/z.lua --init zsh enhanced)"
+
+export SPARK_HOME=/home/hem/Documents/pessoal/faculdade/spark
+export PATH=$PATH:$SPARK_HOME/bin
+
+# export PATH="/usr/local/anaconda3/bin:$PATH"  # commented out by conda initialize

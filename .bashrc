@@ -13,8 +13,6 @@ esac
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
-shopt -s histappend
-
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -135,3 +133,7 @@ conda config --set auto_activate_base True
 
 alias vpn='cd /home/hem/.vpn && sudo openvpn --config falcon-UDP4-1194-hemilyn.aguiar-config.ovpn | bash colorized.conf'
 alias ctags=/usr/local/bin/ctags
+
+eval "$(lua ~/.z.lua/z.lua --init bash)"
+export SPARK_HOME=/home/hem/Documents/pessoal/faculdade/spark
+export PATH=$PATH:$SPARK_HOME/bin
